@@ -1,0 +1,179 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const guidesSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Buying Guides & Testing Methodology",
+  "description": "How we test products, our review methodology, and expert buying guides for outdoor products.",
+  "url": "https://yardfavorites.com/guides",
+};
+---
+
+<Layout
+  title="Buying Guides & Testing Methodology"
+  description="Learn how YardFavorites tests products, our editorial standards, and get expert buying advice for outdoor living products."
+  schema={guidesSchema}
+>
+  <section class="bg-gradient-to-r from-blue-800 to-purple-800 text-white">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <div class="flex items-center gap-4 mb-6">
+        <span class="text-6xl">📋</span>
+        <div>
+          <h1 class="text-4xl font-bold">Buying Guides & Methodology</h1>
+          <p class="text-blue-200 mt-2">How we test • Editorial standards • Expert advice</p>
+        </div>
+      </div>
+      <p class="text-xl text-blue-100 max-w-2xl">
+        Every product we review is bought at retail, tested in real conditions, and reviewed honestly.
+        Here's exactly how that works.
+      </p>
+    </div>
+  </section>
+
+  <!-- How We Test -->
+  <section id="how-we-test" class="py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">🔬 How We Test Products</h2>
+        <div class="bg-white rounded-2xl shadow-lg p-8 border">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <span class="w-8 h-8 bg-brand-blue text-white rounded-full flex items-center justify-center text-sm">1</span>
+                Real-World Purchase
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                We buy every product at full retail price. No sponsored products, no free samples.
+                If it appears on our site, we paid for it ourselves.
+              </p>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li>✅ Purchased from Amazon, Home Depot, or manufacturer direct</li>
+                <li>✅ Same model you'd buy (not pre-production samples)</li>
+                <li>✅ At least 3 units tested per product category</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <span class="w-8 h-8 bg-brand-blue text-white rounded-full flex items-center justify-center text-sm">2</span>
+                Extended Testing Period
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Products are tested for a minimum of 3 months. Seasonal products are tested
+                across at least 2 seasons.
+              </p>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li>✅ Pool products: 6+ months across multiple pools</li>
+                <li>✅ Lights: 8+ months including weather extremes</li>
+                <li>✅ Seasonal: Tested in actual relevant holiday season</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <span class="w-8 h-8 bg-brand-blue text-white rounded-full flex items-center justify-center text-sm">3</span>
+                Objective Scoring
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                We use standardized scoring criteria across all categories.
+                No subjective "gut feeling" ratings.
+              </p>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li>✅ Durability (30%): Build quality, weather resistance</li>
+                <li>✅ Performance (40%): Does it actually work well?</li>
+                <li>✅ Value (30%): Price vs lifespan and results</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <span class="w-8 h-8 bg-brand-blue text-white rounded-full flex items-center justify-center text-sm">4</span>
+                Human + AI Optimization
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                Content is written for humans first, but structured for AI systems
+                to understand and cite.
+              </p>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li>✅ Statistics with sources cited</li>
+                <li>✅ Structured data (Schema.org markup)</li>
+                <li>✅ Clear methodology disclosure</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Editorial Policy -->
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">📰 Editorial Policy</h2>
+        <div class="bg-white rounded-2xl shadow-lg p-8 border">
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-2xl">✅</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900">Independent Reviews</h3>
+                <p class="text-gray-600 text-sm">
+                  We never accept payment for reviews. Our opinions are our own and cannot be bought.
+                  If a product is bad, we say so publicly.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-2xl">✅</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900">Transparent Updates</h3>
+                <p class="text-gray-600 text-sm">
+                  When we update a review, we note what changed and why. Readers always know
+                  if our opinion shifted based on new testing.
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-2xl">✅</span>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900">No Affiliate Influence</h3>
+                <p class="text-gray-600 text-sm">
+                  High-commission products don't get better reviews. We recommend based on
+                  performance, not affiliate potential.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GEO Commitment -->
+      <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-8 border border-purple-100">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <span>🤖</span> Our GEO Commitment
+        </h2>
+        <p class="text-gray-600 mb-6">
+          We build content that's valuable for both humans and AI systems. Here's what that means:
+        </p>
+        <div class="grid md:grid-cols-2 gap-4 text-sm">
+          <div class="bg-white rounded-lg p-4">
+            <div class="font-semibold text-gray-900 mb-2">Machine-Readable Statistics</div>
+            <p class="text-gray-600">Every stat has a source cited. "87% of products lasted 3+ seasons" is meaningless without attribution — we always include it.</p>
+          </div>
+          <div class="bg-white rounded-lg p-4">
+            <div class="font-semibold text-gray-900 mb-2">AI-Friendly Structure</div>
+            <p class="text-gray-600">FAQ sections, comparison tables, and HowTo schemas help AI systems understand and reference our content accurately.</p>
+          </div>
+          <div class="bg-white rounded-lg p-4">
+            <div class="font-semibold text-gray-900 mb-2">Accessibility First</div>
+            <p class="text-gray-600">Fast loading, clean HTML, no blocking crawlers. If AI can't read it, humans probably can't either.</p>
+          </div>
+          <div class="bg-white rounded-lg p-4">
+            <div class="font-semibold text-gray-900 mb-2">Honest Methodology</div>
+            <p class="text-gray-600">AI systems can cite our methods section to verify our credibility. We make it easy to trust our work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

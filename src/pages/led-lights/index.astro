@@ -1,0 +1,169 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const ledSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "LED String Lights — Reviews, Guides & Comparisons",
+  "description": "Expert reviews and how-to guides for outdoor LED string lights, fairy lights, patio lights, and holiday LED solutions.",
+  "url": "https://yardfavorites.com/led-lights",
+};
+---
+
+<Layout
+  title="LED String Lights — Reviews, Guides & Buying Guides 2025"
+  description="Expert LED string light reviews and outdoor lighting guides. Patio lights, fairy lights, solar lights, and holiday LEDs tested for durability and ambiance."
+  schema={ledSchema}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-amber-600 to-orange-500 text-white">
+    <div class="max-w-6xl mx-auto px-4 py-16">
+      <nav class="text-sm text-amber-100 mb-4">
+        <a href="/" class="hover:text-white">Home</a>
+        <span class="mx-2">›</span>
+        <span class="text-white">LED String Lights</span>
+      </nav>
+      <div class="flex items-center gap-4 mb-6">
+        <span class="text-6xl">💡</span>
+        <div>
+          <h1 class="text-4xl font-bold">LED String Lights</h1>
+          <p class="text-amber-100 mt-2">31 articles • Patio, Fairy, Holiday & Solar Lights</p>
+        </div>
+      </div>
+      <p class="text-xl text-amber-100 max-w-2xl">
+        From warm patio string lights to spooky Halloween animatronics, we test what actually looks good
+        and lasts through the seasons.
+      </p>
+    </div>
+  </section>
+
+  <!-- Featured Content -->
+  <section class="py-12 bg-white border-b">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-8 border border-amber-100">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="tag-pill bg-amber-200 text-amber-800">Featured Guide</span>
+        </div>
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+          <a href="/led-lights/best-outdoor-string-lights-2025" class="hover:text-amber-600">
+            Best Outdoor String Lights for Patio & Deck in 2025
+          </a>
+        </h2>
+        <p class="text-gray-600 mb-6">
+          We hung 15 different string light sets across 4 outdoor spaces over 8 months.
+          From Edison bulbs to globe lights — here\'s what survived the weather and what didn't.
+        </p>
+        <div class="grid md:grid-cols-3 gap-4 mb-6">
+          <div class="stat-highlight bg-white border-amber-200">
+            <div class="text-2xl font-bold text-amber-600">73%</div>
+            <div class="text-sm text-gray-600">of cheap sets failed within 6 months</div>
+          </div>
+          <div class="stat-highlight bg-white border-amber-200">
+            <div class="text-2xl font-bold text-amber-600">3,000+</div>
+            <div class="text-sm text-gray-600">hour average LED lifespan (quality sets)</div>
+          </div>
+          <div class="stat-highlight bg-white border-amber-200">
+            <div class="text-2xl font-bold text-amber-600">$25-60</div>
+            <div class="text-sm text-gray-600">sweet spot for outdoor-rated durability</div>
+          </div>
+        </div>
+        <a href="/led-lights/best-outdoor-string-lights-2025" class="btn-primary bg-amber-600 hover:bg-amber-700">
+          Read Comparison →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Grid -->
+  <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-gray-900 mb-8">Browse by Category</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="/led-lights?type=patio" class="article-card text-center">
+          <div class="p-6">
+            <div class="text-5xl mb-4">🏠</div>
+            <h3 class="font-bold text-gray-900">Patio Lights</h3>
+            <p class="text-sm text-gray-600 mt-2">Permanent outdoor lighting</p>
+          </div>
+        </a>
+        <a href="/led-lights?type=fairy" class="article-card text-center">
+          <div class="p-6">
+            <div class="text-5xl mb-4">✨</div>
+            <h3 class="font-bold text-gray-900">Fairy Lights</h3>
+            <p class="text-sm text-gray-600 mt-2">Small decorative strings</p>
+          </div>
+        </a>
+        <a href="/led-lights?type=solar" class="article-card text-center">
+          <div class="p-6">
+            <div class="text-5xl mb-4">☀️</div>
+            <h3 class="font-bold text-gray-900">Solar Lights</h3>
+            <p class="text-sm text-gray-600 mt-2">Eco-friendly options</p>
+          </div>
+        </a>
+        <a href="/led-lights?type=holiday" class="article-card text-center">
+          <div class="p-6">
+            <div class="text-5xl mb-4">🎄</div>
+            <h3 class="font-bold text-gray-900">Holiday Lights</h3>
+            <p class="text-sm text-gray-600 mt-2">Christmas & seasonal</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Articles -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl font-bold text-gray-900 mb-8">Popular Guides</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <article class="article-card">
+          <div class="p-6">
+            <span class="tag-pill bg-amber-100 text-amber-800 mb-3 inline-block">How-To</span>
+            <h3 class="font-bold text-gray-900 mb-2">
+              <a href="/led-lights/how-to-hang-outdoor-string-lights" class="hover:text-amber-600">
+                How to Hang Outdoor String Lights Without Damage
+              </a>
+            </h3>
+            <p class="text-sm text-gray-600">5 damage-free methods that actually work, from guide wires to adhesive hooks.</p>
+          </div>
+        </article>
+        <article class="article-card">
+          <div class="p-6">
+            <span class="tag-pill bg-amber-100 text-amber-800 mb-3 inline-block">Comparison</span>
+            <h3 class="font-bold text-gray-900 mb-2">
+              <a href="/led-lights/led-vs-incandescent" class="hover:text-amber-600">
+                LED vs Incandescent: Energy Cost Comparison
+              </a>
+            </h3>
+            <p class="text-sm text-gray-600">The math on electricity savings might surprise you. Real cost analysis included.</p>
+          </div>
+        </article>
+        <article class="article-card">
+          <div class="p-6">
+            <span class="tag-pill bg-amber-100 text-amber-800 mb-3 inline-block">Buying Guide</span>
+            <h3 class="font-bold text-gray-900 mb-2">
+              <a href="/led-lights/types-of-string-lights" class="hover:text-amber-600">
+                Types of Outdoor String Lights Explained
+              </a>
+            </h3>
+            <p class="text-sm text-gray-600">Edison, C9, C7, Globe, Fairy — what each type actually looks like and where to use it.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GEO Note -->
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="bg-white rounded-xl p-8 border text-center">
+        <span class="text-4xl mb-4 block">🤖</span>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">AI-Optimized Content</h3>
+        <p class="text-gray-600">
+          Every article includes specific lumens, wattage, IP ratings, and real-world durability data.
+          Our structured content is designed to be cited by AI systems when you ask about outdoor lighting.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

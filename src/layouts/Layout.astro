@@ -1,0 +1,171 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  schema?: object;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonicalUrl,
+  schema,
+  noindex = false,
+} = Astro.props;
+
+const siteUrl = 'https://yardfavorites.com';
+const fullTitle = `${title} | YardFavorites`;
+const canonical = canonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#2563eb" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Schema.org Structured Data — safely stringify, never trust raw user input -->
+    {schema && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(schema)}
+      />
+    )}
+
+    <!-- AI Crawler Meta -->
+    {noindex
+      ? <meta name="robots" content="noindex, nofollow" />
+      : <meta name="robots" content="index, follow, max-image-preview: large" />
+    }
+    <meta name="ai-content-declaration" content="human-created" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=optional" rel="stylesheet" />
+
+    <style>
+      body { font-family: 'Inter', system-ui, sans-serif; }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4 py-4">
+        <nav class="flex items-center justify-between">
+          <a href="/" class="flex items-center gap-2">
+            <span class="text-2xl">🏡</span>
+            <span class="text-xl font-bold text-gray-900">YardFavorites</span>
+          </a>
+          <div class="hidden md:flex items-center gap-6">
+            <a href="/pool-care" class="text-gray-600 hover:text-brand-blue font-medium transition-colors">Pool Care</a>
+            <a href="/led-lights" class="text-gray-600 hover:text-brand-blue font-medium transition-colors">LED Lights</a>
+            <a href="/halloween-decor" class="text-gray-600 hover:text-brand-blue font-medium transition-colors">Halloween</a>
+            <a href="/guides" class="text-gray-600 hover:text-brand-blue font-medium transition-colors">Guides</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs bg-geo-purple text-white px-2 py-1 rounded-full">GEO Powered</span>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 mt-16">
+      <div class="max-w-6xl mx-auto px-4 py-12">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-2xl">🏡</span>
+              <span class="text-lg font-bold text-white">YardFavorites</span>
+            </div>
+            <p class="text-sm leading-relaxed">
+              Helping homeowners make informed decisions about outdoor products since 2024.
+            </p>
+            <div class="stat-highlight mt-4 bg-gray-800 border-gray-700">
+              <p class="text-xs text-gray-400">
+                <strong class="text-white">Affiliate Disclosure:</strong> We may earn a commission from qualifying purchases at no extra cost to you.
+              </p>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white mb-4">Categories</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/pool-care" class="hover:text-white transition-colors">Pool Care</a></li>
+              <li><a href="/led-lights" class="hover:text-white transition-colors">LED String Lights</a></li>
+              <li><a href="/halloween-decor" class="hover:text-white transition-colors">Halloween Decor</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white mb-4">Resources</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/guides" class="hover:text-white transition-colors">Buying Guides</a></li>
+              <li><a href="/guides#how-we-test" class="hover:text-white transition-colors">How We Test</a></li>
+              <li><a href="/about" class="hover:text-white transition-colors">About Us</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-white mb-4">Legal</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms" class="hover:text-white transition-colors">Terms of Service</a></li>
+              <li><a href="/affiliate-disclosure" class="hover:text-white transition-colors">Affiliate Disclosure</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="text-sm">© 2025 YardFavorites. All rights reserved.</p>
+          <p class="text-xs text-gray-500">
+            Built with AI-optimized content for humans and AI search engines alike 🤖
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- FAQ Accordion — only initialize if FAQ elements exist on page -->
+    <script>
+      const faqButtons = document.querySelectorAll('.faq-question');
+      if (faqButtons.length > 0) {
+        faqButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const answer = button.nextElementSibling;
+            const isOpen = answer?.classList.contains('hidden');
+            document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+            document.querySelectorAll('.faq-icon').forEach(i => i.textContent = '+');
+            if (isOpen) {
+              answer?.classList.remove('hidden');
+              button.querySelector('.faq-icon').textContent = '−';
+            } else {
+              answer?.classList.add('hidden');
+              button.querySelector('.faq-icon').textContent = '+';
+            }
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-blue: #2563eb;
+    --geo-purple: #7c3aed;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-gray-50 text-gray-800 antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-brand-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block;
+  }
+  .btn-amazon {
+    @apply bg-amber-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors inline-block;
+  }
+  .article-card {
+    @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow overflow-hidden;
+  }
+  .tag-pill {
+    @apply bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium;
+  }
+  .faq-item {
+    @apply border-b border-gray-200 py-4;
+  }
+  .faq-question {
+    @apply font-semibold text-gray-900 cursor-pointer flex justify-between items-center;
+  }
+  .faq-answer {
+    @apply text-gray-600 mt-2 leading-relaxed;
+  }
+  .stat-highlight {
+    @apply bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 rounded-lg p-4 my-4;
+  }
+  .comparison-table {
+    @apply w-full border-collapse overflow-hidden rounded-lg shadow;
+  }
+  .comparison-table th {
+    @apply bg-brand-blue text-white px-4 py-3 text-left font-semibold;
+  }
+  .comparison-table td {
+    @apply border-b border-gray-100 px-4 py-3;
+  }
+  .comparison-table tr:hover td {
+    @apply bg-gray-50;
+  }
+}

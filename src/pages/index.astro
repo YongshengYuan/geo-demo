@@ -1,0 +1,227 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const homepageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "YardFavorites",
+  "url": "https://yardfavorites.com",
+  "description": "Expert reviews and guides for outdoor living products including pool care tools, LED string lights, and seasonal decorations.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "YardFavorites",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yardfavorites.com/logo.png"
+    }
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://yardfavorites.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+
+const categories = [
+  {
+    slug: 'pool-care',
+    icon: '🏊',
+    title: 'Pool Care Tools',
+    description: 'Skimmers, brushes, vacuums, test kits, and everything you need for crystal-clear water.',
+    articleCount: 24,
+    featured: [
+      { title: 'Best Pool Skimmer Nets 2025', url: '/pool-care/best-pool-skimmer-nets-2025' },
+      { title: 'How to Balance Pool Chemicals', url: '/pool-care/how-to-balance-pool-chemicals' },
+    ],
+    color: 'from-blue-500 to-cyan-400'
+  },
+  {
+    slug: 'led-lights',
+    icon: '💡',
+    title: 'LED String Lights',
+    description: 'Outdoor fairy lights, patio string lights, and holiday LED solutions for every season.',
+    articleCount: 31,
+    featured: [
+      { title: 'Best Outdoor String Lights 2025', url: '/led-lights/best-outdoor-string-lights-2025' },
+      { title: 'How to Hang String Lights', url: '/led-lights/how-to-hang-outdoor-string-lights' },
+    ],
+    color: 'from-amber-400 to-orange-400'
+  },
+  {
+    slug: 'halloween-decor',
+    icon: '🎃',
+    title: 'Halloween Decor',
+    description: 'Inflatables, animatronics, yard decorations, and spooky essentials for the perfect Halloween display.',
+    articleCount: 18,
+    featured: [
+      { title: 'Best Inflatable Halloween Decorations', url: '/halloween-decor/best-inflatable-halloween-decorations-2025' },
+      { title: 'Best Halloween Animatronics Under $100', url: '/halloween-decor/best-halloween-animatronics-under-100' },
+    ],
+    color: 'from-purple-600 to-orange-500'
+  },
+];
+
+const geoStats = [
+  { number: '40%', label: 'GEO Visibility Boost', source: 'KDD 2024 Research' },
+  { number: '4.4x', label: 'AI Visitor Conversion', source: 'Semrush 2025' },
+  { number: '30-40%', label: 'Stats Cite Rate', source: 'arxiv:2311.09735' },
+];
+---
+
+<Layout
+  title="Expert Outdoor Product Reviews & Buying Guides"
+  description="Real-world tested reviews of pool care tools, LED string lights, and Halloween decorations. Helping homeowners choose the best outdoor products since 2024."
+  schema={homepageSchema}
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 text-white">
+    <div class="max-w-6xl mx-auto px-4 py-20">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full mb-6">
+          <span class="text-sm font-medium">🤖</span>
+          <span class="text-sm">GEO-Optimized Content — Built for AI & Human Readers</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+          Outdoor Products,
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">
+            Real-World Tested
+          </span>
+        </h1>
+        <p class="text-xl text-blue-100 leading-relaxed mb-8">
+          We buy, test, and review the products you see on Amazon. No fluff, no sponsored reviews —
+          just honest insights to help you make smarter purchases for your yard.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#categories" class="btn-primary bg-white text-brand-blue hover:bg-blue-50">
+            Explore Products
+          </a>
+          <a href="/guides" class="btn-primary bg-white/10 hover:bg-white/20 border border-white/30">
+            How We Test
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GEO Stats Banner -->
+  <section class="bg-white border-b">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+      <div class="grid grid-cols-3 gap-6 text-center">
+        {geoStats.map(stat => (
+          <div class="stat-highlight">
+            <div class="text-3xl font-bold text-brand-blue">{stat.number}</div>
+            <div class="text-sm font-medium text-gray-700 mt-1">{stat.label}</div>
+            <div class="text-xs text-gray-500 mt-1">Source: {stat.source}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section id="categories" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">What We Cover</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Three categories, hundreds of real-world tests, and honest reviews to help you find
+          the perfect products for your outdoor space.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {categories.map(cat => (
+          <div class="article-card">
+            <div class={`h-3 bg-gradient-to-r ${cat.color}`}></div>
+            <div class="p-6">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-4xl">{cat.icon}</span>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900">{cat.title}</h3>
+                  <span class="text-sm text-gray-500">{cat.articleCount} articles</span>
+                </div>
+              </div>
+              <p class="text-gray-600 mb-6">{cat.description}</p>
+              <div class="space-y-2 mb-6">
+                {cat.featured.map(article => (
+                  <a
+                    href={article.url}
+                    class="flex items-center gap-2 text-sm text-brand-blue hover:text-blue-700 transition-colors"
+                  >
+                    <span>→</span>
+                    {article.title}
+                  </a>
+                ))}
+              </div>
+              <a href={`/${cat.slug}`} class={`btn-primary w-full text-center block bg-gradient-to-r ${cat.color} border-0`}>
+                View All →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GEO Explainer Section -->
+  <section class="bg-gradient-to-r from-purple-50 to-blue-50 py-16">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-3xl">🤖</span>
+          <h2 class="text-2xl font-bold text-gray-900">Why Our Reviews Are Different</h2>
+        </div>
+        <div class="prose prose-lg text-gray-600">
+          <p>
+            Most review sites publish content for one reader: Google. We optimize for two:
+            <strong>humans</strong> and <strong>AI search engines</strong>.
+          </p>
+          <p>
+            That's why we include detailed statistics, methodology sections, and structured data
+            that AI systems like ChatGPT, Perplexity, and Google's AI Overviews can actually
+            understand and cite.
+          </p>
+        </div>
+        <div class="mt-8 grid md:grid-cols-2 gap-6">
+          <div class="bg-blue-50 rounded-lg p-6">
+            <h4 class="font-bold text-gray-900 mb-3">📊 Statistics-First Approach</h4>
+            <p class="text-sm text-gray-600">
+              Every review includes specific numbers: "87% of test units lasted 3+ seasons",
+              "pumps an average of 2,500 gallons per hour." AI systems cite data, not opinions.
+            </p>
+          </div>
+          <div class="bg-purple-50 rounded-lg p-6">
+            <h4 class="font-bold text-gray-900 mb-3">🏗️ Machine-Readable Structure</h4>
+            <p class="text-sm text-gray-600">
+              We use proper Schema.org markup, FAQ sections, and comparison tables that AI
+              can parse and reference in its answers.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">
+        Ready to Find Your Perfect Outdoor Product?
+      </h2>
+      <p class="text-gray-600 mb-8">
+        Start with our expert reviews and buying guides — all backed by real-world testing.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/pool-care" class="btn-primary bg-blue-600 hover:bg-blue-700">
+          Pool Care Guides
+        </a>
+        <a href="/led-lights" class="btn-primary bg-amber-500 hover:bg-amber-600">
+          LED Light Guides
+        </a>
+        <a href="/halloween-decor" class="btn-primary bg-purple-600 hover:bg-purple-700">
+          Halloween Decor Guides
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

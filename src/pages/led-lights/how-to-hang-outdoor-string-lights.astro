@@ -1,0 +1,297 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Hang Outdoor String Lights Without Damaging Your House",
+  "description": "5 damage-free methods to hang outdoor string lights. Including guide wires, adhesive hooks, gutter clips, and zip ties. Tested on patios, decks, and yards.",
+  "datePublished": "2025-03-01",
+  "dateModified": "2025-03-15",
+  "author": { "@type": "Person", "name": "YardFavorites Testing Team" },
+  "publisher": { "@type": "Organization", "name": "YardFavorites" },
+  "step": [
+    { name: "Plan your layout", text: "Measure your space and mark hook positions before installing anything." },
+    { name: "Choose the right method", text: "Select based on your surface: guide wires for long spans, clips for gutters, adhesive hooks for smooth surfaces." },
+    { name: "Install mounting hardware", text: "Attach guide wires or hooks at each endpoint and every 2-3 feet for support." },
+    { name: "String the lights", text: "Lay lights along the wire, using cable ties to secure every 1-2 feet." },
+    { name: "Test and adjust", text: "Plug in and check for sag, hot spots, or loose sections." }
+  ],
+  "supply": [
+    { "@type": "HowToSupply", name: "Guide wire or picture wire" },
+    { "@type": "HowToSupply", name: "S-hooks or snap hooks" },
+    { "@type": "HowToSupply", name: "Outdoor adhesive hooks (like 3M Command)" },
+    { "@type": "HowToSupply", name: "Cable ties / zip ties" },
+    { "@type": "HowToSupply", name: "Gutter clips (if applicable)" }
+  ]
+};
+
+const faqItems = [
+  { q: "How do I hang string lights on a patio without nails?", a: "Use adhesive hooks (3M Command Outdoor) for smooth surfaces — they hold up to 3 lbs and remove cleanly. For gutters, use gutter clips that snap on without hardware. Neither method requires drilling or nails." },
+  { q: "What is the best way to hang string lights over a large span?", a: "Use a guide wire system: run stainless steel wire between two anchor points (eye hooks in walls or posts), then hang lights from the wire with S-hooks or zip ties. This supports the weight and prevents sagging." },
+  { q: "How far apart should string light supports be?", a: "For most string light sets, support every 2-3 feet. Without enough support, the lights will sag significantly. For heavy C9 bulbs, support every 18-24 inches." },
+  { q: "Do string light hooks damage gutters?", a: "Gutter clips designed for string lights snap onto the gutter lip without adhesives or screws, causing zero damage. Avoid hanging heavy loads from gutter spikes — that's what causes damage." },
+  { q: "Can I leave outdoor string lights up year-round?", a: "Quality outdoor-rated lights (IP65+) can stay up 12 months. Check your lights' IP rating: IP44 handles light rain, IP65+ handles heavy rain and sun exposure. Cheap lights (IP20) should come down after the season." },
+  { q: "How do I keep string lights from sagging?", a: "Three things: (1) Use a guide wire, not just the light string to support weight; (2) Support every 2 feet, not just at endpoints; (3) Choose the right bulb weight — C9 bulbs are heavier than globe lights and need more support." }
+];
+---
+
+<Layout
+  title="How to Hang Outdoor String Lights Without Damaging Your House — 5 Methods"
+  description="5 damage-free methods to hang outdoor string lights. Guide wires, adhesive hooks, gutter clips, and more. Tested on real patios, decks, and yards."
+  schema={articleSchema}
+>
+  <div class="bg-gray-100 py-3">
+    <div class="max-w-4xl mx-auto px-4">
+      <nav class="text-sm text-gray-600">
+        <a href="/" class="hover:text-brand-blue">Home</a>
+        <span class="mx-2">›</span>
+        <a href="/led-lights" class="hover:text-brand-blue">LED Lights</a>
+        <span class="mx-2">›</span>
+        <span class="text-gray-400">How to Hang String Lights</span>
+      </nav>
+    </div>
+  </div>
+
+  <article class="py-12">
+    <div class="max-w-4xl mx-auto px-4">
+      <header class="mb-10">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="tag-pill bg-amber-200 text-amber-800">How-To Guide</span>
+          <span class="tag-pill bg-green-100 text-green-800">Updated March 2025</span>
+        </div>
+        <h1 class="text-4xl font-extrabold text-gray-900 leading-tight mb-4">
+          How to Hang Outdoor String Lights Without Damaging Your House
+        </h1>
+        <p class="text-xl text-gray-600">
+          5 tested methods — from zero-damage adhesive hooks to permanent guide wire systems.
+          No drilling, no holes, no landlord complaints.
+        </p>
+      </header>
+
+      <!-- Key Stats -->
+      <div class="stat-highlight mb-10 bg-gradient-to-r from-amber-50 to-orange-50 border-amber-200">
+        <h2 class="text-lg font-bold text-gray-900 mb-4">📊 Before You Start</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div>
+            <div class="text-2xl font-bold text-amber-600">0 holes</div>
+            <p class="text-sm text-gray-600">All 5 methods work without drilling</p>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-amber-600">$10-30</div>
+            <p class="text-sm text-gray-600">Total hardware cost for most methods</p>
+          </div>
+          <div>
+            <div class="text-2xl font-bold text-amber-600">2-3 ft</div>
+            <p class="text-sm text-gray-600">Optimal support spacing for sag prevention</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Methods -->
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">5 Methods Ranked by Ease</h2>
+
+        <div class="space-y-6">
+          <!-- Method 1 -->
+          <div class="bg-white rounded-xl p-6 border">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">1</div>
+              <div class="flex-1">
+                <h3 class="font-bold text-gray-900 text-lg mb-2">Adhesive Hooks — Easiest, Zero Damage</h3>
+                <p class="text-gray-600 text-sm mb-4">
+                  Best for: Smooth surfaces (vinyl, metal, painted wood). Temporary or seasonal use.
+                </p>
+                <div class="bg-green-50 rounded-lg p-4 mb-4">
+                  <div class="font-semibold text-gray-900 mb-2">What you need:</div>
+                  <p class="text-sm text-gray-600">3M Command Outdoor Hooks (rated 3-5 lbs) or similar. ~$8 for a pack of 4.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4">
+                  <div class="font-semibold text-gray-900 mb-2">Steps:</div>
+                  <ol class="text-sm text-gray-600 space-y-1 list-decimal list-inside">
+                    <li>Clean surface with rubbing alcohol — no residue</li>
+                    <li>Peel backing, press hook firmly for 30 seconds</li>
+                    <li>Wait 1 hour before hanging anything (adhesive cures)</li>
+                    <li>Hang lights using S-hooks or direct string</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Method 2 -->
+          <div class="bg-white rounded-xl p-6 border">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">2</div>
+              <div class="flex-1">
+                <h3 class="font-bold text-gray-900 text-lg mb-2">Gutter Clips — Perfect for Rooflines</h3>
+                <p class="text-gray-600 text-sm mb-4">
+                  Best for: Hanging along gutter lines without any hardware.
+                </p>
+                <div class="bg-green-50 rounded-lg p-4 mb-4">
+                  <div class="font-semibold text-gray-900 mb-2">What you need:</div>
+                  <p class="text-sm text-gray-600">Magnetic or spring-loaded gutter clips. ~$10-15 for 20 clips.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4">
+                  <div class="font-semibold text-gray-900 mb-2">Steps:</div>
+                  <ol class="text-sm text-gray-600 space-y-1 list-decimal list-inside">
+                    <li>Snap clips onto gutter lip every 2 feet</li>
+                    <li>Thread light string through clip slots or hook</li>
+                    <li>Adjust spacing as needed</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Method 3 -->
+          <div class="bg-white rounded-xl p-6 border">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">3</div>
+              <div class="flex-1">
+                <h3 class="font-bold text-gray-900 text-lg mb-2">Guide Wire System — Most Secure, Long Spans</h3>
+                <p class="text-gray-600 text-sm mb-4">
+                  Best for: Long spans (over 15 feet), heavy C9 bulbs, permanent installation.
+                </p>
+                <div class="bg-amber-50 rounded-lg p-4 mb-4">
+                  <div class="font-semibold text-gray-900 mb-2">What you need:</div>
+                  <p class="text-sm text-gray-600">Stainless steel guide wire, eye hooks, S-hooks, cable ties. ~$20-30 for 50ft.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4">
+                  <div class="font-semibold text-gray-900 mb-2">Steps:</div>
+                  <ol class="text-sm text-gray-600 space-y-1 list-decimal list-inside">
+                    <li>Install eye hooks at each endpoint (screw into wood or use wall anchors)</li>
+                    <li>Run guide wire between hooks, pull taut</li>
+                    <li>Hang lights from wire with S-hooks every 2 feet</li>
+                    <li>Use cable ties to secure lights to wire at each support point</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Method 4 -->
+          <div class="bg-white rounded-xl p-6 border">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">4</div>
+              <div class="flex-1">
+                <h3 class="font-bold text-gray-900 text-lg mb-2">T Post + Zip Ties — Budget Pergola/Post Setup</h3>
+                <p class="text-gray-600 text-sm mb-4">
+                  Best for: Pergolas, decks with posts, fence posts.
+                </p>
+                <div class="bg-gray-50 rounded-lg p-4">
+                  <div class="font-semibold text-gray-900 mb-2">Steps:</div>
+                  <ol class="text-sm text-gray-600 space-y-1 list-decimal list-inside">
+                    <li>Wrap guide wire around each post, pull taut</li>
+                    <li>Secure with zip ties at each wrap point</li>
+                    <li>String lights along wire, zip tie every 2 feet</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Method 5 -->
+          <div class="bg-white rounded-xl p-6 border">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-amber-500 text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">5</div>
+              <div class="flex-1">
+                <h3 class="font-bold text-gray-900 text-lg mb-2">Tape + Adhesive Clips — For Glass/Metal</h3>
+                <p class="text-gray-600 text-sm mb-4">
+                  Best for: Glass windows, metal railings, smooth stone surfaces.
+                </p>
+                <div class="bg-gray-50 rounded-lg p-4">
+                  <div class="font-semibold text-gray-900 mb-2">Steps:</div>
+                  <ol class="text-sm text-gray-600 space-y-1 list-decimal list-inside">
+                    <li>Use mounting tape (like 3M VHB) for semi-permanent hold</li>
+                    <li>Apply tape to clip back, press firmly 30 seconds</li>
+                    <li>Wait 1 hour before loading</li>
+                    <li>Clip lights in — heavier sets need more tape</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="mb-10 overflow-x-auto">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Method Comparison</h2>
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Difficulty</th>
+              <th>Permanence</th>
+              <th>Max Span</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-semibold">Adhesive Hooks</td>
+              <td>⭐ Very Easy</td>
+              <td>Temporary/Seasonal</td>
+              <td>6-8 ft</td>
+              <td>$8-15</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Gutter Clips</td>
+              <td>⭐ Easy</td>
+              <td>Seasonal</td>
+              <td>Any</td>
+              <td>$10-20</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Guide Wire</td>
+              <td>⭐⭐ Medium</td>
+              <td>Permanent</td>
+              <td>50+ ft</td>
+              <td>$20-30</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Post + Zip Ties</td>
+              <td>⭐ Easy</td>
+              <td>Seasonal</td>
+              <td>Any</td>
+              <td>$5-10</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Tape + Clips</td>
+              <td>⭐ Easy</td>
+              <td>Semi-Permanent</td>
+              <td>6-8 ft</td>
+              <td>$5-10</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FAQ -->
+      <div class="bg-gray-50 rounded-xl p-6 mb-10">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">❓ Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          {faqItems.map(item => (
+            <div class="faq-item border-b border-gray-200 pb-4">
+              <button class="faq-question w-full text-left">
+                <span>{item.q}</span>
+                <span class="faq-icon text-brand-blue text-xl">+</span>
+              </button>
+              <div class="faq-answer hidden">{item.a}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="bg-gradient-to-r from-amber-600 to-orange-500 rounded-xl p-8 text-center text-white">
+        <h2 class="text-2xl font-bold mb-4">Ready to Light Up Your Space?</h2>
+        <p class="text-amber-100 mb-6">See our top-rated string lights for patios and decks — all outdoor-rated and ready for year-round use.</p>
+        <a href="/led-lights/best-outdoor-string-lights-2025" class="bg-white text-amber-600 px-6 py-3 rounded-lg font-semibold hover:bg-amber-50 transition-colors inline-block">
+          View Best String Lights →
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout>
