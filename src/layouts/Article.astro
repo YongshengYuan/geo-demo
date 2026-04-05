@@ -1,0 +1,420 @@
+---
+import Layout from './Layout.astro';
+
+interface BreadcrumbItem {
+  label: string;
+  url: string;
+}
+
+interface RelatedArticle {
+  title: string;
+  url: string;
+  category: string;
+}
+
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface Product {
+  name: string;
+  price: string;
+  rating: number;
+  durability?: number;
+  pickup?: number;
+  value?: number;
+  pros: string[];
+  cons: string[];
+}
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  schema?: object;
+  // Breadcrumb
+  breadcrumbs: BreadcrumbItem[];
+  // Category
+  category: string;
+  categorySlug: string;
+  // Article meta
+  datePublished: string;
+  dateModified?: string;
+  readTime: string;
+  tag?: string; // e.g. "Comparison Review"
+  updateLabel?: string;
+  // Key Stats
+  keyStats?: { number: string; label: string }[];
+  // FAQ
+  faqItems?: FAQItem[];
+  // Products for comparison table
+  products?: Product[];
+  // Top Pick / Best Value
+  topPick?: { name: string; price: string; rating: number; pros: string[]; cons: string[]; amazonUrl?: string };
+  bestValue?: { name: string; price: string; rating: number; pros: string[]; cons: string[]; amazonUrl?: string };
+  // Related Articles
+  relatedArticles?: RelatedArticle[];
+  // 同分类的其他文章（用于生成 Previous/Next）
+  allCategoryArticles?: { title: string; url: string; date: string }[];
+  // Methodology
+  methodology?: { title: string; items: { heading: string; body: string }[] };
+  // Amazon disclosure
+  showAmazonDisclosure?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonicalUrl,
+  schema,
+  breadcrumbs,
+  category,
+  categorySlug,
+  datePublished,
+  dateModified,
+  readTime,
+  tag,
+  updateLabel,
+  keyStats,
+  faqItems,
+  products,
+  topPick,
+  bestValue,
+  relatedArticles,
+  allCategoryArticles,
+  methodology,
+  showAmazonDisclosure = true,
+} = Astro.props;
+
+// 生成 Article Schema
+const articleSchema = schema || {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "datePublished": datePublished,
+  "dateModified": dateModified || datePublished,
+  "author": { "@type": "Organization", "name": "YardFavorites" },
+  "publisher": { "@type": "Organization", "name": "YardFavorites", "url": "https://yardfavorites.com" },
+};
+
+// 生成 BreadcrumbList Schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": breadcrumbs.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.label,
+    "item": `https://yardfavorites.com${item.url}`,
+  })),
+};
+
+// 找 Previous / Next（同分类文章时间线）
+const sortedArticles = allCategoryArticles?.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()) || [];
+const currentIndex = sortedArticles.findIndex(a => a.url === Astro.url.pathname);
+const prevArticle = currentIndex > 0 ? sortedArticles[currentIndex - 1] : null;
+const nextArticle = currentIndex < sortedArticles.length - 1 ? sortedArticles[currentIndex + 1] : null;
+
+// 合并 schema：传入的 schema + BreadcrumbList
+const mergedSchema = {
+  ...(typeof articleSchema === 'object' ? articleSchema : {}),
+  ...(breadcrumbSchema && { breadcrumbList: breadcrumbSchema }),
+};
+---
+
+<Layout title={title} description={description} canonicalUrl={canonicalUrl} schema={mergedSchema}>
+  <!-- Breadcrumb -->
+  <div class="bg-gray-100 py-3">
+    <div class="max-w-4xl mx-auto px-4">
+      <nav class="text-sm text-gray-600" aria-label="Breadcrumb">
+        {breadcrumbs.map((item, i) => (
+          <span class="inline-flex items-center">
+            {i > 0 && <span class="mx-2 text-gray-400">›</span>}
+            {item.url ? (
+              <a href={item.url} class="hover:text-brand-blue">{item.label}</a>
+            ) : (
+              <span class="text-gray-400">{item.label}</span>
+            )}
+          </span>
+        ))}
+      </nav>
+    </div>
+  </div>
+
+  <article class="py-12">
+    <div class="max-w-4xl mx-auto px-4">
+
+      {/* ===== ARTICLE HEADER ===== */}
+      <header class="mb-10">
+        <div class="flex items-center gap-2 mb-4 flex-wrap">
+          {tag && <span class="tag-pill bg-blue-200 text-blue-800">{tag}</span>}
+          {updateLabel && <span class="tag-pill bg-green-100 text-green-800">{updateLabel}</span>}
+          <span class="text-sm text-gray-500">{readTime} read</span>
+        </div>
+
+        <h1 class="text-4xl font-extrabold text-gray-900 leading-tight mb-6">
+          {title}
+        </h1>
+
+        <p class="text-xl text-gray-600 leading-relaxed mb-6">
+          {description}
+        </p>
+
+        <div class="flex items-center gap-6 pt-6 border-t">
+          <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-brand-blue rounded-full flex items-center justify-center text-white font-bold">Y</div>
+            <div>
+              <div class="font-semibold text-gray-900">YardFavorites Team</div>
+              <div class="text-sm text-gray-500">Real-world testing since 2024</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* ===== KEY STATS MODULE ===== */}
+      {keyStats && keyStats.length > 0 && (
+        <div class="stat-highlight mb-10">
+          <h2 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span>📊</span> Key Statistics from Our Testing
+          </h2>
+          <div class="grid md:grid-cols-3 gap-4">
+            {keyStats.map(stat => (
+              <div>
+                <div class="text-2xl font-bold text-blue-600">{stat.number}</div>
+                <p class="text-sm text-gray-600">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ===== WHY TRUST THIS REVIEW ===== */}
+      <div class="bg-gray-50 rounded-xl p-6 mb-10 border">
+        <h2 class="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+          <span>🏆</span> Why Trust This Review
+        </h2>
+        <ul class="text-sm text-gray-600 space-y-2">
+          <slot name="why-trust" />
+        </ul>
+      </div>
+
+      {/* ===== COMPARISON TABLE ===== */}
+      {products && products.length > 0 && (
+        <div class="mb-10 overflow-x-auto">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Head-to-Head Comparison</h2>
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Rating</th>
+                <th>Durability</th>
+                <th>Pickup Rate</th>
+                <th>Value Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map(p => (
+                <tr>
+                  <td class="font-semibold">{p.name}</td>
+                  <td>{p.price}</td>
+                  <td class="font-bold text-brand-blue">{p.rating}/5</td>
+                  <td>
+                    {p.durability !== undefined && (
+                      <div class="flex items-center gap-2">
+                        <div class="w-16 bg-gray-200 rounded-full h-2">
+                          <div class="bg-blue-600 h-2 rounded-full" style={`width: ${p.durability}%`}></div>
+                        </div>
+                        <span class="text-sm">{p.durability}%</span>
+                      </div>
+                    )}
+                  </td>
+                  <td>
+                    {p.pickup !== undefined && (
+                      <div class="flex items-center gap-2">
+                        <div class="w-16 bg-gray-200 rounded-full h-2">
+                          <div class="bg-green-600 h-2 rounded-full" style={`width: ${p.pickup}%`}></div>
+                        </div>
+                        <span class="text-sm">{p.pickup}%</span>
+                      </div>
+                    )}
+                  </td>
+                  <td>
+                    {p.value !== undefined && (
+                      <div class="flex items-center gap-2">
+                        <div class="w-16 bg-gray-200 rounded-full h-2">
+                          <div class="bg-amber-500 h-2 rounded-full" style={`width: ${p.value}%`}></div>
+                        </div>
+                        <span class="text-sm">{p.value}%</span>
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {/* ===== PROS/CONS GRID ===== */}
+      {(topPick || bestValue) && (
+        <div class="grid md:grid-cols-2 gap-6 mb-10">
+          {topPick && (
+            <div class="bg-green-50 rounded-xl p-6 border border-green-200">
+              <h3 class="font-bold text-gray-900 mb-4">🥇 Top Pick: {topPick.name}</h3>
+              <div class="space-y-2 text-sm mb-4">
+                <div><span class="font-semibold">✅ Pros:</span> {topPick.pros.join(', ')}</div>
+                <div><span class="font-semibold">❌ Cons:</span> {topPick.cons.join(', ')}</div>
+              </div>
+              {topPick.amazonUrl && (
+                <a href={topPick.amazonUrl} class="btn-amazon w-full text-center block" rel="sponsored nofollow">
+                  Check Price on Amazon →
+                </a>
+              )}
+            </div>
+          )}
+          {bestValue && (
+            <div class="bg-amber-50 rounded-xl p-6 border border-amber-200">
+              <h3 class="font-bold text-gray-900 mb-4">💰 Best Value: {bestValue.name}</h3>
+              <div class="space-y-2 text-sm mb-4">
+                <div><span class="font-semibold">✅ Pros:</span> {bestValue.pros.join(', ')}</div>
+                <div><span class="font-semibold">❌ Cons:</span> {bestValue.cons.join(', ')}</div>
+              </div>
+              {bestValue.amazonUrl && (
+                <a href={bestValue.amazonUrl} class="btn-amazon w-full text-center block" rel="sponsored nofollow">
+                  Check Price on Amazon →
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ===== SLOT: CUSTOM ARTICLE CONTENT ===== */}
+      <slot />
+
+      {/* ===== METHODOLOGY ===== */}
+      {methodology && methodology.items && (
+        <div class="bg-white rounded-xl p-6 mb-10 border">
+          <h2 class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span>📋</span> {methodology.title || 'Testing Methodology'}
+          </h2>
+          <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-600">
+            {methodology.items.map(item => (
+              <div>
+                <h4 class="font-semibold text-gray-900">{item.heading}</h4>
+                <p>{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ===== FAQ SECTION ===== */}
+      {faqItems && faqItems.length > 0 && (
+        <div class="bg-gray-50 rounded-xl p-6 mb-10">
+          <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <span>❓</span> Frequently Asked Questions
+          </h2>
+          <div class="space-y-4">
+            {faqItems.map((item, i) => (
+              <div class="faq-item border-b border-gray-200 pb-4">
+                <button class="faq-question w-full text-left" aria-expanded="false">
+                  <span>{item.q}</span>
+                  <span class="faq-icon text-brand-blue text-xl">+</span>
+                </button>
+                <div class="faq-answer hidden">
+                  {item.a}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ===== PREVIOUS / NEXT ===== */}
+      {(prevArticle || nextArticle) && (
+        <div class="flex justify-between gap-4 mb-10 text-sm">
+          <div>
+            {prevArticle && (
+              <span class="text-gray-500 block">← Previous</span>
+              <a href={prevArticle.url} class="text-brand-blue hover:text-blue-700 font-medium">{prevArticle.title}</a>
+            )}
+          </div>
+          <div class="text-right">
+            {nextArticle && (
+              <span class="text-gray-500 block">Next →</span>
+              <a href={nextArticle.url} class="text-brand-blue hover:text-blue-700 font-medium">{nextArticle.title}</a>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ===== RELATED ARTICLES ===== */}
+      {relatedArticles && relatedArticles.length > 0 && (
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 mb-10">
+          <h2 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span>📚</span> Related Articles
+          </h2>
+          <div class="grid md:grid-cols-2 gap-3">
+            {relatedArticles.map(article => (
+              <a
+                href={article.url}
+                class="flex items-start gap-3 p-3 bg-white rounded-lg hover:shadow-md transition-shadow"
+              >
+                <span class="text-brand-blue mt-0.5">→</span>
+                <div>
+                  <div class="font-medium text-gray-900 text-sm">{article.title}</div>
+                  <div class="text-xs text-gray-500">{article.category}</div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ===== BACK TO CATEGORY ===== */}
+      <div class="text-center mb-10">
+        <a href={`/${categorySlug}`} class="text-brand-blue hover:text-blue-700 font-medium">
+          ← Back to {category}
+        </a>
+      </div>
+
+      {/* ===== AMAZON DISCLOSURE ===== */}
+      {showAmazonDisclosure && (
+        <div class="bg-amber-50 rounded-xl p-6 border border-amber-200 mb-10">
+          <p class="text-sm text-gray-700">
+            <strong>Affiliate Disclosure:</strong> YardFavorites is reader-supported. If you purchase
+            through links on this page, we may earn a commission at no additional cost to you.
+            This helps us continue providing free, honest product reviews.
+          </p>
+        </div>
+      )}
+
+      {/* ===== FINAL CTA ===== */}
+      <div class="bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl p-8 text-center text-white">
+        <h2 class="text-2xl font-bold mb-4">Ready to Buy?</h2>
+        <p class="text-blue-100 mb-6">
+          Check current prices on Amazon — we update links regularly to ensure you get the best deal.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="#"
+            class="bg-white text-brand-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+          >
+            🏊 Check on Amazon
+          </a>
+          <a
+            href={`/${categorySlug}`}
+            class="bg-white/20 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/30 transition-colors"
+          >
+            ← Back to {category}
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </article>
+</Layout>
