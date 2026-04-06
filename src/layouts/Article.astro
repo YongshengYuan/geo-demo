@@ -51,8 +51,8 @@ interface Props {
   // Products for comparison table
   products?: Product[];
   // Top Pick / Best Value
-  topPick?: { name: string; price: string; rating: number; pros: string[]; cons: string[]; amazonUrl?: string };
-  bestValue?: { name: string; price: string; rating: number; pros: string[]; cons: string[]; amazonUrl?: string };
+  topPick?: { name: string; price: string; rating: number; pros: string[]; cons: string[]; amazonUrl?: string; amazonUkUrl?: string };
+  bestValue?: { name: string; price: string; rating: number; pros: string[]; cons: string[]; amazonUrl?: string; amazonUkUrl?: string };
   // Related Articles
   relatedArticles?: RelatedArticle[];
   // 同分类的其他文章（用于生成 Previous/Next）
@@ -269,8 +269,13 @@ const mergedSchema = {
                 <div><span class="font-semibold">❌ Cons:</span> {topPick.cons.join(', ')}</div>
               </div>
               {topPick.amazonUrl && (
-                <a href={topPick.amazonUrl} class="btn-amazon w-full text-center block" rel="sponsored nofollow">
-                  Check Price on Amazon →
+                <a href={topPick.amazonUrl} class="btn-amazon w-full text-center block mb-2" rel="sponsored nofollow">
+                  🇺🇸 Check on Amazon US →
+                </a>
+              )}
+              {topPick.amazonUkUrl && (
+                <a href={topPick.amazonUkUrl} class="btn-amazon w-full text-center block" rel="sponsored nofollow">
+                  🇬🇧 Check on Amazon UK →
                 </a>
               )}
             </div>
@@ -285,6 +290,11 @@ const mergedSchema = {
               {bestValue.amazonUrl && (
                 <a href={bestValue.amazonUrl} class="btn-amazon w-full text-center block" rel="sponsored nofollow">
                   Check Price on Amazon →
+                </a>
+              )}
+              {bestValue.amazonUkUrl && (
+                <a href={bestValue.amazonUkUrl} class="btn-amazon w-full text-center block mt-2" rel="sponsored nofollow">
+                  🇬🇧 Amazon UK →
                 </a>
               )}
             </div>
