@@ -61,6 +61,10 @@ interface Props {
   methodology?: { title: string; items: { heading: string; body: string }[] };
   // Amazon disclosure
   showAmazonDisclosure?: boolean;
+  // CTA Amazon link
+  ctaAmazonUrl?: string;
+  ctaAmazonUkUrl?: string;
+  ctaAmazonDeUrl?: string;
 }
 
 const {
@@ -85,6 +89,9 @@ const {
   allCategoryArticles,
   methodology,
   showAmazonDisclosure = true,
+  ctaAmazonUrl,
+  ctaAmazonUkUrl,
+  ctaAmazonDeUrl,
 } = Astro.props;
 
 // 生成 Article Schema
@@ -420,12 +427,33 @@ const mergedSchema = {
           Check current prices on Amazon — we update links regularly to ensure you get the best deal.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-          <a
-            href="#"
-            class="bg-white text-brand-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-          >
-            🏊 Check on Amazon
-          </a>
+          {ctaAmazonUrl && (
+            <a
+              href={ctaAmazonUrl}
+              class="bg-white text-brand-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+              rel="sponsored nofollow"
+            >
+              🇺🇸 Check on Amazon US
+            </a>
+          )}
+          {ctaAmazonUkUrl && (
+            <a
+              href={ctaAmazonUkUrl}
+              class="bg-white text-brand-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+              rel="sponsored nofollow"
+            >
+              🇬🇧 Amazon UK
+            </a>
+          )}
+          {ctaAmazonDeUrl && (
+            <a
+              href={ctaAmazonDeUrl}
+              class="bg-white text-brand-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+              rel="sponsored nofollow"
+            >
+              🇩🇪 Amazon DE
+            </a>
+          )}
           <a
             href={`/${categorySlug}`}
             class="bg-white/20 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/30 transition-colors"
