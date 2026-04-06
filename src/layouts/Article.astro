@@ -217,9 +217,13 @@ const mergedSchema = {
                 <th>Product</th>
                 <th>Price</th>
                 <th>Rating</th>
-                <th>Durability</th>
-                <th>Pickup Rate</th>
-                <th>Value Score</th>
+                {products[0].durability !== undefined && <th>Durability</th>}
+                {products[0].pickup !== undefined && <th>Pickup Rate</th>}
+                {products[0].value !== undefined && <th>Value Score</th>}
+                {products[0].maneuverability !== undefined && <th>Maneuverability</th>}
+                {products[0].debrisRemoval !== undefined && <th>Debris Removal</th>}
+                {products[0].suction !== undefined && <th>Suction Power</th>}
+                {products[0].wallClimb !== undefined && <th>Wall Climb</th>}
               </tr>
             </thead>
             <tbody>
@@ -228,36 +232,76 @@ const mergedSchema = {
                   <td class="font-semibold">{p.name}</td>
                   <td>{p.price}</td>
                   <td class="font-bold text-brand-blue">{p.rating}/5</td>
-                  <td>
-                    {p.durability !== undefined && (
+                  {p.durability !== undefined && (
+                    <td>
                       <div class="flex items-center gap-2">
                         <div class="w-16 bg-gray-200 rounded-full h-2">
                           <div class="bg-blue-600 h-2 rounded-full" style={`width: ${p.durability}%`}></div>
                         </div>
                         <span class="text-sm">{p.durability}%</span>
                       </div>
-                    )}
-                  </td>
-                  <td>
-                    {p.pickup !== undefined && (
+                    </td>
+                  )}
+                  {p.pickup !== undefined && (
+                    <td>
                       <div class="flex items-center gap-2">
                         <div class="w-16 bg-gray-200 rounded-full h-2">
                           <div class="bg-green-600 h-2 rounded-full" style={`width: ${p.pickup}%`}></div>
                         </div>
                         <span class="text-sm">{p.pickup}%</span>
                       </div>
-                    )}
-                  </td>
-                  <td>
-                    {p.value !== undefined && (
+                    </td>
+                  )}
+                  {p.value !== undefined && (
+                    <td>
                       <div class="flex items-center gap-2">
                         <div class="w-16 bg-gray-200 rounded-full h-2">
                           <div class="bg-amber-500 h-2 rounded-full" style={`width: ${p.value}%`}></div>
                         </div>
                         <span class="text-sm">{p.value}%</span>
                       </div>
-                    )}
-                  </td>
+                    </td>
+                  )}
+                  {p.maneuverability !== undefined && (
+                    <td>
+                      <div class="flex items-center gap-2">
+                        <div class="w-16 bg-gray-200 rounded-full h-2">
+                          <div class="bg-green-600 h-2 rounded-full" style={`width: ${p.maneuverability}%`}></div>
+                        </div>
+                        <span class="text-sm">{p.maneuverability}%</span>
+                      </div>
+                    </td>
+                  )}
+                  {p.debrisRemoval !== undefined && (
+                    <td>
+                      <div class="flex items-center gap-2">
+                        <div class="w-16 bg-gray-200 rounded-full h-2">
+                          <div class="bg-blue-600 h-2 rounded-full" style={`width: ${p.debrisRemoval}%`}></div>
+                        </div>
+                        <span class="text-sm">{p.debrisRemoval}%</span>
+                      </div>
+                    </td>
+                  )}
+                  {p.suction !== undefined && (
+                    <td>
+                      <div class="flex items-center gap-2">
+                        <div class="w-16 bg-gray-200 rounded-full h-2">
+                          <div class="bg-green-600 h-2 rounded-full" style={`width: ${p.suction}%`}></div>
+                        </div>
+                        <span class="text-sm">{p.suction}%</span>
+                      </div>
+                    </td>
+                  )}
+                  {p.wallClimb !== undefined && (
+                    <td>
+                      <div class="flex items-center gap-2">
+                        <div class="w-16 bg-gray-200 rounded-full h-2">
+                          <div class="bg-purple-600 h-2 rounded-full" style={`width: ${p.wallClimb}%`}></div>
+                        </div>
+                        <span class="text-sm">{p.wallClimb}%</span>
+                      </div>
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
