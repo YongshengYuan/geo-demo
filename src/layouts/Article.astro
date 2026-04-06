@@ -51,8 +51,8 @@ interface Props {
   // Products for comparison table
   products?: Product[];
   // Top Pick / Best Value
-  topPick?: { name: string; price: string; rating: number; pros: string[]; cons: string[]; amazonUrl?: string; amazonUkUrl?: string };
-  bestValue?: { name: string; price: string; rating: number; pros: string[]; cons: string[]; amazonUrl?: string; amazonUkUrl?: string };
+  topPick?: { name: string; price: string; rating: number; pros: string[]; cons: string[]; amazonUrl?: string; amazonUkUrl?: string; amazonDeUrl?: string };
+  bestValue?: { name: string; price: string; rating: number; pros: string[]; cons: string[]; amazonUrl?: string; amazonUkUrl?: string; amazonDeUrl?: string };
   // Related Articles
   relatedArticles?: RelatedArticle[];
   // 同分类的其他文章（用于生成 Previous/Next）
@@ -278,6 +278,11 @@ const mergedSchema = {
                   🇬🇧 Check on Amazon UK →
                 </a>
               )}
+              {topPick.amazonDeUrl && (
+                <a href={topPick.amazonDeUrl} class="btn-amazon w-full text-center block" rel="sponsored nofollow">
+                  🇩🇪 Check on Amazon DE →
+                </a>
+              )}
             </div>
           )}
           {bestValue && (
@@ -295,6 +300,11 @@ const mergedSchema = {
               {bestValue.amazonUkUrl && (
                 <a href={bestValue.amazonUkUrl} class="btn-amazon w-full text-center block mt-2" rel="sponsored nofollow">
                   🇬🇧 Amazon UK →
+                </a>
+              )}
+              {bestValue.amazonDeUrl && (
+                <a href={bestValue.amazonDeUrl} class="btn-amazon w-full text-center block mt-2" rel="sponsored nofollow">
+                  🇩🇪 Amazon DE →
                 </a>
               )}
             </div>
