@@ -421,47 +421,49 @@ const mergedSchema = {
       )}
 
       {/* ===== FINAL CTA ===== */}
-      <div class="bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl p-8 text-center text-white">
-        <h2 class="text-2xl font-bold mb-4">Ready to Buy?</h2>
-        <p class="text-blue-100 mb-6">
-          Check current prices on Amazon — we update links regularly to ensure you get the best deal.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-          {ctaAmazonUrl && (
+      {(ctaAmazonUrl || ctaAmazonUkUrl || ctaAmazonDeUrl) && (
+        <div class="bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl p-8 text-center text-white">
+          <h2 class="text-2xl font-bold mb-4">Ready to Buy?</h2>
+          <p class="text-blue-100 mb-6">
+            Check current prices on Amazon — we update links regularly to ensure you get the best deal.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            {ctaAmazonUrl && (
+              <a
+                href={ctaAmazonUrl}
+                class="bg-white text-brand-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                rel="sponsored nofollow"
+              >
+                🇺🇸 Check on Amazon US
+              </a>
+            )}
+            {ctaAmazonUkUrl && (
+              <a
+                href={ctaAmazonUkUrl}
+                class="bg-white text-brand-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                rel="sponsored nofollow"
+              >
+                🇬🇧 Amazon UK
+              </a>
+            )}
+            {ctaAmazonDeUrl && (
+              <a
+                href={ctaAmazonDeUrl}
+                class="bg-white text-brand-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                rel="sponsored nofollow"
+              >
+                🇩🇪 Amazon DE
+              </a>
+            )}
             <a
-              href={ctaAmazonUrl}
-              class="bg-white text-brand-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-              rel="sponsored nofollow"
+              href={`/${categorySlug}`}
+              class="bg-white/20 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/30 transition-colors"
             >
-              🇺🇸 Check on Amazon US
+              ← Back to {category}
             </a>
-          )}
-          {ctaAmazonUkUrl && (
-            <a
-              href={ctaAmazonUkUrl}
-              class="bg-white text-brand-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-              rel="sponsored nofollow"
-            >
-              🇬🇧 Amazon UK
-            </a>
-          )}
-          {ctaAmazonDeUrl && (
-            <a
-              href={ctaAmazonDeUrl}
-              class="bg-white text-brand-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-              rel="sponsored nofollow"
-            >
-              🇩🇪 Amazon DE
-            </a>
-          )}
-          <a
-            href={`/${categorySlug}`}
-            class="bg-white/20 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/30 transition-colors"
-          >
-            ← Back to {category}
-          </a>
+          </div>
         </div>
-      </div>
+      )}
 
     </div>
   </article>
