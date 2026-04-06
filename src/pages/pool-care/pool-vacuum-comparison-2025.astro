@@ -36,19 +36,22 @@ const products = [
 ];
 
 const topPick = {
-  name: 'Dolphin E10 Robotic Cleaner',
-  price: '$499',
-  rating: 4.6,
-  pros: ['Set-and-forget scheduling', 'Filters water as it cleans', 'Energy efficient (uses less than a lightbulb)', 'No installation or hose setup'],
-  cons: ['Cannot clean walls in above-ground mode', 'Basket design takes getting used to', 'Pricey upfront'],
+  name: 'Cromaxa Jet Pool Vacuum',
+  price: '$24.79',
+  rating: 4.5,
+  pros: ['Lowest price in test - exceptional value for above-ground pools', 'Zero operating cost - no electricity, no batteries', 'Lightweight and portable - works on spas and hot tubs too', 'No installation or setup required - works off garden hose pressure'],
+  cons: ['Manual operation - requires physical effort vs robotic', 'Cannot climb walls like robotic cleaners', 'Requires 40 PSI water pressure for best results'],
+  amazonUrl: 'https://www.amazon.com/dp/B0GQQW7YB1',
+  amazonUkUrl: 'https://www.amazon.co.uk/dp/B0GQCW38PL',
+  amazonDeUrl: 'https://www.amazon.de/dp/B0GQCW38PL',
 };
 
 const bestValue = {
-  name: 'Hayward Navigator Pro',
-  price: '$299',
-  rating: 4.2,
-  pros: ['No additional equipment required', 'Reliable pre-programmed steering', 'Widely available replacement parts'],
-  cons: ['Slow - plan for overnight runs', 'Weak suction on walls', 'Relies entirely on pump horsepower'],
+  name: 'Cromaxa Jet Pool Vacuum',
+  price: '$24.79',
+  rating: 4.5,
+  pros: ['Lowest price in test by far', 'Zero energy cost ongoing', 'Works in pools, spas, inflatable pools and small ponds'],
+  cons: ['Manual operation only', 'Not suitable for large in-ground pools'],
 };
 
 const faqItems = [
@@ -89,6 +92,9 @@ const methodology = {
   relatedArticles={relatedArticles}
   allCategoryArticles={allCategoryArticles}
   methodology={methodology}
+  ctaAmazonUrl={topPick.amazonUrl}
+  ctaAmazonUkUrl={topPick.amazonUkUrl}
+  ctaAmazonDeUrl={topPick.amazonDeUrl}
 >
   <span slot="why-trust">
     <li>8 weeks of continuous real-world testing</li>
